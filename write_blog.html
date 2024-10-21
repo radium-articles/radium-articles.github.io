@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write Blogs</title>
+    <link rel="shortcut icon" href="icons/pen_paper.svg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/constant.css">
+    <style>
+        .topbar {
+            position: fixed;
+        }
+
+        .topbar .publish_post {
+            width: 110px;
+            height: 40px;
+            font-size: 15px;
+            margin: auto;
+            margin-top: -2px;
+            margin-right: 20px;
+            cursor: pointer;
+            color: #ffffff;
+            border-radius: 3px;
+            border: 2px solid #1e1e1e;
+            background-color: #1e1e1e;
+            transition: .2s ease-in-out;
+        }
+
+        .topbar .publish_post:hover {
+            border: 2px solid rgb(255, 213, 227);
+        }
+
+        .box {
+            /* width: 88%; */
+            max-width: 1125px;
+            height: 100%;
+            margin: auto;
+            margin-bottom: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* border: 1px solid orangered; */
+        }
+
+        .post_writing_area {
+            width: 650px;
+            height: 100%;
+            text-align: left;
+            margin-top: 23px;
+            margin-left: -50px;
+            /* border: 1px solid black; */
+        }
+
+        .post_writing_area .heading {
+            font-size: 35px;
+            font-weight: 500;
+            line-height: 1.3;
+            letter-spacing: 1px;
+            color: #292929;
+            outline: none;
+            text-align: left;
+            font-family: "Besley", serif;
+        }
+
+        .post_writing_area .heading2 {
+            font-size: 28px;
+            font-weight: 500;
+            line-height: 1.3;
+            letter-spacing: 1px;
+            color: #292929;
+            outline: none;
+            text-align: left;
+            font-family: "Besley", serif;
+        }
+
+        .post_writing_area .subheading {
+            font-size: 20px;
+            font-weight: 400;
+            outline: none;
+            margin-top: -15px;
+            color: #292929;
+            text-align: left;
+            font-family: "Besley", serif;
+        }
+
+        .post_writing_area .maincontent {
+            font-size: 23px;
+            font-weight: 400;
+            outline: none;
+            margin-top: -15px;
+            color: #292929;
+            text-align: justify;
+            hyphens: auto;
+            font-family: "Poppins";
+        }
+
+        .post_writing_area .thumbnailimage {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .post_writing_area .blogpostimages {
+            width: 85%;
+            margin-left: 6.5%;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        .post_writing_area .iframe_div {
+            width: 85%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        .post_writing_area .iframe_div iframe {
+            width: 100%;
+            height: 400px;
+        }
+
+        .linebreak {
+            width: 100%;
+            height: 1px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            background-color: #1e1e1e;
+            cursor: pointer;
+        }
+
+        .toolbox {
+            width: 50px;
+            height: max-content;
+            position: fixed;
+            left: 140px;
+            top: 15%;
+            padding: 10px;
+            border-radius: 10px;
+            /* border: 1px solid black; */
+        }
+
+        .toolbox button {
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 15px;
+            border-radius: 50%;
+            background-color: antiquewhite;
+            border: none;
+            color: #1e1e1e;
+            transition: .2s ease-in-out;
+        }
+
+        .toolbox button:hover {
+            box-shadow: 5px 0px 80px 0px #ffe6e6;
+            background-color: #ffe6e6;
+        }
+
+        /* Text format toolbar */
+        .text-toolbar {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .text-toolbar button {
+            height: 50px;
+            width: 50px;
+            font-size: 20px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .highlight {
+            background-color: #deacac;
+            padding-left: 5px;
+            padding-right: 5px;
+            color: white;
+        }
+
+
+        .open-gemini-button {
+            width: 55px;
+            height: 55px;
+            font-size: 17px;
+            cursor: pointer;
+            border-radius: 50%;
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #F2F2F2;
+            background-color: #fff;
+            -webkit-box-shadow: 10px 30px 60px 0px rgba(231, 184, 255, 1);
+            -moz-box-shadow: 10px 30px 60px 0px rgba(231, 184, 255, 1);
+            box-shadow: 10px 10px 70px 0px rgba(231, 184, 255, 1);
+        }
+
+        .open-gemini-button img{
+            width: 25px;
+        }
+
+        .close-gemini-button {
+            display: none;
+            width: 140px;
+            height: 40px;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 25px;
+            position: fixed;
+            right: 170px;
+            top: 7px;
+            hyphens: auto;
+            border: 2px solid #F2F2F2;
+            background-color: #fff;
+            -webkit-box-shadow: 10px 30px 60px 0px rgb(255, 184, 184);
+            -moz-box-shadow: 10px 30px 60px 0px rgb(255, 184, 184);
+            box-shadow: 10px 10px 70px 0px rgb(255, 184, 184);
+        }
+
+        .open-gemini-button img {
+            height: 35px;
+        }
+
+
+        .gemini-ai-helper {
+            display: none;
+            width: 25%;
+            height: 470px;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            border-radius: 25px;
+            background-color: #f2f2f2;
+        }
+
+        .chat-container {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            border-radius: 10px;
+            border: 2px solid #1e1e1e;
+            box-shadow: 0 0 150px rgba(0, 0, 0, 0.1);
+        }
+
+        .conversation-box {
+            padding: 20px;
+            height: 370px;
+            overflow-y: auto;
+            border-bottom: 1px solid #000;
+        }
+
+        .conversation-box p {
+            margin: 10px 0;
+        }
+
+        .conversation-box p strong {
+            color: #333;
+        }
+
+        #conversation {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #conversation li {
+            margin-left: 20px;
+        }
+
+        .input-container {
+            display: flex;
+            padding: 10px;
+        }
+
+        .input-container input {
+            flex: 1;
+            height: 20px;
+            padding: 10px;
+            outline: none;
+            padding-left: 20px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            margin-right: 10px;
+        }
+
+        .input-container button {
+            padding: 10px 20px;
+            background-color: #cd6e8e;
+            color: white;
+            border: none;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: .2s ease-in-out;
+        }
+
+        .input-container button:hover {
+            background-color: #cd557d;
+        }
+
+        .ai-output h2,
+        h3 {
+            color: #007bff;
+        }
+
+        .ai-output ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .ai-output table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+
+        .ai-output table th,
+        .ai-output table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <span class="mask-bg">
+            <p class="logo">Radium.</p>
+            <!-- <p class="logo-bloom">Radium.</p> -->
+        </span>
+        <button class="publish_post">Publish &nbsp;<i class="fas fa-arrow-up"></i></button>
+    </div>
+
+    <br><br><br>
+    <div class="box">
+
+        <div class="toolbox">
+            <button class="addheading" title="Add Heading"><i class="fas fa-h1"></i></button>
+            <button class="addheading2" title="Add Heading 2 < H1"><i class="fas fa-h2"></i></button>
+            <button class="addparagraph" title="Add Paragraph"><i class="fas fa-paragraph"></i></button>
+            <button class="addimage" title="Add Image By URL"><i class="fas fa-image"></i></button>
+            <button class="addlink" title="Add Link"><i class="fas fa-link"></i></button>
+            <button class="addvideo" title="Embed Video From Youtube"><i class="fab fa-youtube"></i></button>
+            <button class="separator" title="Add A Line Break" style="margin-bottom: 15px;"><i
+                    class="fas fa-ruler"></i></button>
+        </div>
+
+        <div class="post_writing_area">
+            <center>
+                <h1 class="heading" contenteditable="true">This is Heading !</h1>
+                <p class="subheading" contenteditable="true">This is Subheading : 1-2 Lines is Enough !</p>
+                <img class="thumbnailimage" src="representation.png" alt="thumbnail">
+                <div class="linebreak"></div>
+            </center>
+        </div>
+
+        <button onclick="closethegeminibox()" class="close-gemini-button">Close Radium</button>
+        <button onclick="opengeminichatarea()" class="open-gemini-button"><img src="icons/Gemini.svg"></button>
+        <div class="gemini-ai-helper">
+
+            <div class="chat-container">
+                <div class="conversation-box" id="conversation"></div>
+                <!-- Input Container -->
+                <div class="input-container">
+                    <input type="text" id="user-input" placeholder="Type your message..." />
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!-- Text formatting toolbar -->
+    <div class="text-toolbar" id="text-toolbar">
+        <button onclick="document.execCommand('bold', false, '');"><b>B</b></button>
+        <button onclick="document.execCommand('italic', false, '');"><i>I</i></button>
+        <button onclick="document.execCommand('underline', false, '');"><u>U</u></button>
+        <button onclick="highlightText();"><i class="fas fa-highlighter"></i></button>
+    </div>
+
+    <script>
+        // Thumbnail image update logic
+        document.querySelector('.thumbnailimage').addEventListener('click', function () {
+            const imgUrl = prompt('Enter new image URL:');
+            if (imgUrl) {
+                this.src = imgUrl;
+            }
+        });
+
+        // Adding Heading 1
+        document.querySelector('.addheading').addEventListener('click', function () {
+            let h1 = document.createElement('h1');
+            h1.textContent = 'This is Heading 1 !!';
+            h1.classList.add('heading');
+            h1.contentEditable = true;
+            document.querySelector('.post_writing_area').appendChild(h1);
+        });
+
+        // Adding Heading 2
+        document.querySelector('.addheading2').addEventListener('click', function () {
+            let h2 = document.createElement('h2');
+            h2.textContent = 'This is Heading 2 !!';
+            h2.classList.add('heading2');
+            h2.contentEditable = true;
+            document.querySelector('.post_writing_area').appendChild(h2);
+        });
+
+        // Adding Paragraph
+        document.querySelector('.addparagraph').addEventListener('click', function () {
+            let para = document.createElement('p');
+            para.textContent = 'This is Paragraph !!';
+            para.classList.add('maincontent');
+            para.contentEditable = true;
+            document.querySelector('.post_writing_area').appendChild(para);
+        });
+
+        // Add Image
+        document.querySelector('.addimage').addEventListener('click', function () {
+            let image = document.createElement('img');
+            const imgUrl = prompt('Enter image URL (make sure it’s a valid link):');
+            image.classList.add('blogpostimages');
+            image.src = imgUrl;
+            image.contentEditable = true;
+            document.querySelector('.post_writing_area').appendChild(image);
+        });
+
+        // Add Links
+        document.querySelector('.addlink').addEventListener('click', function () {
+            let link = document.createElement('a');
+            const LinkURL = prompt("Enter Link you want to redirect or give source of : ");
+            const LinkName = prompt("Enter Name you want to display for link to be clicked : ");
+            link.textContent = LinkName;
+            link.classList.add('link');
+            link.href = LinkURL;
+            link.target = "_blank";
+            link.contentEditable = true;
+            document.querySelector('.post_writing_area').appendChild(link);
+        });
+
+        // Add Video
+        document.querySelector('.addvideo').addEventListener('click', function () {
+            let iframe = document.createElement('div');
+            const iframecode = prompt("Enter Youtube Embed Code of any video : ");
+            iframe.innerHTML = iframecode;
+            iframe.classList.add('iframe_div');
+            iframe.contentEditable = true;
+            document.querySelector('.post_writing_area').appendChild(iframe);
+        });
+
+        // Add Separator
+        document.querySelector('.separator').addEventListener('click', function () {
+            let seprator = document.createElement('div');
+            seprator.classList.add('linebreak');
+            seprator.contentEditable = true;
+            document.querySelector('.post_writing_area').appendChild(seprator);
+        });
+
+        // Delete element logic (includes images and linebreaks)
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Delete') {
+                const activeElement = document.activeElement;
+                if (activeElement.isContentEditable || activeElement.tagName === 'IMG' || activeElement.classList.contains('linebreak')) {
+                    activeElement.remove();
+                }
+            }
+        });
+
+        document.addEventListener('mouseup', function (e) {
+            const selection = window.getSelection();
+            const selectedText = selection.toString();
+            const toolbar = document.getElementById('text-toolbar');
+
+            if (selectedText.length > 0) {
+                let range = selection.getRangeAt(0);
+                let container = range.commonAncestorContainer;
+
+                while (container && container !== document.body && !(container.nodeType === 1 && container.classList.contains('post_writing_area'))) {
+                    container = container.parentNode;
+                }
+
+                if (container && container.nodeType === 1 && container.classList.contains('post_writing_area')) {
+                    const rect = range.getBoundingClientRect();
+                    toolbar.style.top = `${rect.top - toolbar.offsetHeight - 5}px`;
+                    toolbar.style.left = `${rect.left}px`;
+                    toolbar.style.display = 'block';
+                } else {
+                    toolbar.style.display = 'none';
+                }
+            } else {
+                toolbar.style.display = 'none';
+            }
+        });
+
+        function highlightText() {
+            let range = window.getSelection().getRangeAt(0);
+            let span = document.createElement("span");
+            span.className = "highlight";
+            span.appendChild(range.extractContents());
+            range.insertNode(span);
+        }
+
+
+
+
+        
+
+        // Save as HTML file logic
+        document.querySelector('.publish_post').addEventListener('click', function () {
+            const heading = document.querySelector('.heading').textContent.trim();
+            const content = document.querySelector('.post_writing_area').innerHTML;
+
+            // Create the HTML content to save
+            const htmlContent = `
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>${heading}</title>
+                    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
+                    <style>
+                        /* Add your styles here if needed */
+                    </style>
+                </head>
+                <body>
+                    <h1>${heading}</h1>
+                    ${content}
+                </body>
+                </html>
+            `;
+
+            // Create a blob and download it
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${heading}.html`; // Set the file name to the heading
+            a.click();
+            URL.revokeObjectURL(url); // Cleanup
+        });
+
+    </script>
+
+
+
+
+    <script>
+        // AI API Key
+        const apiKey = "AIzaSyCUd-SDIPFuV69oyaZ5hxM6EclOl-BeLQg"; // Replace with your API key
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${apiKey}`;
+
+        function opengeminichatarea() {
+            document.querySelector(".gemini-ai-helper").style.display = "Block";
+            document.querySelector(".close-gemini-button").style.display = "Block";
+            document.querySelector(".post_writing_area").style.marginLeft = "-80px";
+        }
+
+        function closethegeminibox() {
+            document.querySelector(".gemini-ai-helper").style.display = "none";
+            document.querySelector(".close-gemini-button").style.display = "none";
+            document.querySelector(".post_writing_area").style.marginLeft = "0";
+        }
+
+        // Initialize conversation history
+        let conversationHistory = [
+            {
+                "role": "model",
+                "parts": [
+                    {
+                        "text": ""
+                    }
+                ]
+            }
+        ];
+
+        // System prompt (simplified, no user details needed)
+        const systemPrompt = `You are a helpful AI assistant named Radium, capable of rewriting aany sentence to make it even more catchy ad easy to understand while maintaining its tone and Search Engine Optimization (SEO) . beacuse you are also a blog writer. 
+Provide structured responses with clear formatting. Use bullet points, numbered lists, tables, headings, bold, italics, and other formatting where relevant to enhance readability and comprehension.`;
+
+        // Function to send a message and update conversation (text mode)
+        async function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            if (!userInput) return;
+
+            conversationHistory.push({
+                "role": "user",
+                "parts": [{ "text": userInput }]
+            });
+
+            const requestBody = {
+                "contents": conversationHistory,
+                "systemInstruction": {
+                    "role": "user",
+                    "parts": [{ "text": systemPrompt }]
+                },
+                "generationConfig": {
+                    "temperature": 1,
+                    "topK": 64,
+                    "topP": 0.95,
+                    "maxOutputTokens": 8192,
+                    "responseMimeType": "text/plain"
+                }
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestBody)
+                });
+
+                const data = await response.json();
+                let aiResponse = data.candidates[0].content.parts[0].text;
+
+                aiResponse = formatResponse(aiResponse);
+
+                conversationHistory.push({
+                    "role": "model",
+                    "parts": [{ "text": aiResponse.formatted }]
+                });
+
+                updateConversationDisplay(userInput, aiResponse);
+
+            } catch (error) {
+                console.error("Error communicating with the API:", error);
+            }
+
+            document.getElementById('user-input').value = ''; // Clear input field
+        }
+
+        // Function to display conversation
+        function updateConversationDisplay(userInput, aiResponse) {
+            const conversationDiv = document.getElementById('conversation');
+            conversationDiv.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+            conversationDiv.innerHTML += `<p><strong>Radium AI :</strong> ${aiResponse.formatted}</p>`;
+            conversationDiv.scrollTop = conversationDiv.scrollHeight;  // Scroll to bottom
+        }
+
+        // Advanced function to format AI responses (lists, tables, bold, headings, etc.)
+        function formatResponse(response) {
+            // Format bullet points
+            response = response.replace(/\* /g, '<li class="list-item">');
+            if (response.includes('<li class="list-item">')) {
+                response = '<ul>' + response + '</ul>';
+            }
+
+            // Format numbered lists (1. ...)
+            response = response.replace(/(\d+)\. /g, '<li class="list-item">$1. ');
+
+            // Format headings (## for h2, ### for h3)
+            response = response.replace(/##(.*?)\n/g, '<h2>$1</h2>');
+            response = response.replace(/###(.*?)\n/g, '<h3>$1</h3>');
+
+            // Bold text (enclosed by **)
+            response = response.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+            // Italic text (enclosed by *)
+            response = response.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+            // Tables: Format table syntax (| Column1 | Column2 | ... |)
+            const tableRows = response.match(/(\|.*?\|)/g);
+            if (tableRows) {
+                let table = '<table><thead>';
+                tableRows.forEach((row, index) => {
+                    const columns = row.split('|').filter(col => col.trim() !== '').map(col => `<td>${col.trim()}</td>`).join('');
+                    table += index === 0 ? `<tr>${columns}</tr></thead><tbody>` : `<tr>${columns}</tr>`;
+                });
+                table += '</tbody></table>';
+                response = response.replace(/(\|.*?\|)/g, table);
+            }
+
+            // Format bullet points into unordered list
+            response = response.replace(/(\n\- )(.*?)/g, '<ul><li>$2</li></ul>');
+
+            // Extract plain text for readability in other contexts (if needed)
+            const plainText = response.replace(/<[^>]+>/g, '');  // Remove HTML tags
+
+            return { formatted: response, plainText: plainText };
+        }
+
+    </script>
+</body>
+
+</html>

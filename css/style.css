@@ -1,0 +1,525 @@
+/* Can be used for displaying heading Of Blog Articles
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');*/
+
+/* Fonts and other constnt things are stored under constant.css file*/
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    font-family: "Hellix";
+}
+
+.topbar {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid #1e1e1e;
+    border-bottom: 1px solid #F2F2F2;
+}
+
+.topbar .logo {
+    font-size: 35px;
+    font-family: "Mate";
+    font-weight: bolder;
+    letter-spacing: 1px;
+    margin-left: 20px;
+    /* color: black;
+    text-shadow: 0 0 30px #7DF600; */
+}
+
+/* Gradient Logo Text Code Starts */
+
+
+.topbar .searcharea {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.topbar .searcharea img {
+    width: 20px;
+    height: 20px;
+    margin-right: -40px;
+    z-index: 1;
+}
+
+.topbar .searcharea input {
+    width: 200px;
+    height: 40px;
+    font-size: 15px;
+    padding-left: 50px;
+    padding-right: 20px;
+    border: none;
+    outline: none;
+    font-family: "poppins";
+    border-radius: 70px;
+    background-color: #F9F9F9;
+}
+
+.topbar .controls_box {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: auto;
+    margin-right: 20px;
+}
+
+.topbar .write_new_post_btn{
+    /* width: 45px; */
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    border-radius: 50px;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+    margin-right: 10px;
+    color: grey;
+    background-color: #fff;
+}
+
+.topbar .write_new_post_btn:hover{
+    color: black;
+}
+
+.topbar .write_new_post_btn img{
+    width: 25%;
+    /* height: 60%; */
+}
+
+.topbar .account {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1.5px solid #F2F2F2;
+    background-color: #fff;
+}
+
+.topbar .account img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+
+
+
+/* Main Blog Article Card Designing CSS Code */
+
+.maincontent-area{
+    /* width: 88%; */
+    max-width: 1125px;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    /* border: 1px solid orangered; */
+}
+
+.topics-latestarticle-box{
+    width: 68%;
+    height: 100%;
+    /* border: 2px solid red; */
+    border-right: 1px solid #F2F2F2;
+}
+
+
+
+
+
+.topics-latestarticle-box .topics-bar{
+    width: 91%;
+    height: 45px;
+    margin-top: 32px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    /* border-right: 1.5px solid #F2F2F2; */
+    border-bottom: 1.5px solid #F2F2F2;
+}
+
+.topics-latestarticle-box .topics-bar button{
+    height: 46px;
+    width: max-content;
+    margin-right: 25px;
+    border: none;
+    color: grey;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+    font-family: "Hellix";
+    background-color: transparent;
+    border-bottom: 2.5px solid #fff;
+}
+
+.topics-latestarticle-box .topics-bar .topics-button.active{
+    border-bottom: 2.5px solid #1e1e1e;
+    color: #1E1E1E;
+}
+
+
+
+
+
+
+/* Article Showing Section */
+
+.topics-latestarticle-box .latest-article-section{
+    width: 95%;
+    height: max-content;
+    /* border: 1px solid black; */
+}
+
+.topics-latestarticle-box .latest-article-section .article-card{
+    width: 91%;
+    /* height: 50%; */
+    height: max-content;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    /* margin: auto; */
+    border-top: 2px solid black;
+    border: none;
+    margin-top: 30px;
+    border-bottom: 2px solid #F2F2F2;
+}
+
+.latest-article-section .article-card .prof-auname{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    /* border: 1px solid black; */
+}
+
+.latest-article-section .article-card .prof-auname .author-profile{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.latest-article-section .article-card .prof-auname .author-name{
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.latest-article-section .article-card .head-sub-thumb{
+    /* height: 175px; */
+    height: max-content;
+    width: 100%;
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+    /* border: 1px solid red; */
+}
+
+.latest-article-section .article-card .head-sub-thumb .only-H-S{
+    width: 70%;
+    height: 100%;
+    /* border: 1px solid #1E1E1E; */
+}
+
+.latest-article-section .article-card .head-sub-thumb .only-H-S .heading{
+    font-size: 25px;
+    margin-top: 10px;
+    font-weight: 600;
+    font-family: "SUSE", sans-serif;
+    /* font-family: "Roboto Flex", sans-serif; */
+}
+
+.latest-article-section .article-card .head-sub-thumb .only-H-S .subheading{
+    font-size: 16px;
+    height: 40px;
+    margin-top: -13px;
+    overflow: hidden;
+    color: #646464;
+    hyphens: auto;
+    /* border: 1px solid black; */
+}
+
+.latest-article-section .article-card .head-sub-thumb .onlythumbnail{
+    width: 27%;
+    height: 100px;
+    display: flex;
+    margin-top: 16px;
+    margin-left: 50px;
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid black; */
+}
+
+.latest-article-section .article-card .head-sub-thumb .onlythumbnail img{
+    width: 100%;
+    height: 100%;
+}
+
+.latest-article-section .article-card .views-date-heart-save{
+    width: 73%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    /* margin-top: -10px; */
+    /* border: 1px solid #1e1e1e; */
+}
+
+.latest-article-section .article-card .views-date-heart-save .left-side{
+    width: 35%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.latest-article-section .article-card .views-date-heart-save .left-side .views{
+    width: 60px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    font-size: 14px;
+    color: #646464;
+    padding-right: 10px;
+}
+
+.latest-article-section .article-card .views-date-heart-save .left-side .date-of-publish{
+    width: 70px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #646464;
+    padding-right: 10px;
+}
+
+.latest-article-section .article-card .views-date-heart-save .right-side-btn-box{
+    height: 30px;
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    /* border: 2px solid black; */
+}
+
+.latest-article-section .article-card .views-date-heart-save .right-side-btn-box button{
+    width: 30px;
+    height: 30px;
+    /* padding: 20px; */
+    float: right;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    background-color: transparent;
+}
+
+.latest-article-section .article-card .views-date-heart-save .right-side-btn-box .heart{
+    font-size: 17px;
+    color: hotpink;
+}
+
+.latest-article-section .article-card .views-date-heart-save .right-side-btn-box .bookmark{
+    font-size: 17px;
+    color: hotpink;
+}
+
+
+
+
+
+
+
+/* Blog Ui End Here ! */
+
+
+
+
+.followed-authors-and-recommendations-box{
+    width: 30%;
+    height: 100%;
+    padding-left: 35px;
+    margin-top: 25px; /* Yaha Pr ungli mat kr diyo fasi ki saja hogi 💀 */
+    /* border: 2px solid #282386; */
+}
+
+.followed-authors-and-recommendations-box .followed-authors-box{
+    width: 300px;
+    height: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid #F2F2F2;
+    /* border: 1px solid #1e1e1e; */
+}
+
+.followed-authors-and-recommendations-box .followed-authors-box .authors-you-follow-text{
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+    font-family: "Hellix";
+}
+
+.followed-authors-and-recommendations-box .followed-authors-box .followed-authors-details-box{
+    height: 50px;
+    width: 300px;
+    display: flex;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    /* border-bottom: 1px solid #F2F2F2; */
+    /* border: 2px solid orange; */
+}
+
+.followed-authors-and-recommendations-box .followed-authors-box .followed-authors-details-box .followed-authors-profile{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.followed-authors-and-recommendations-box .followed-authors-box .followed-authors-details-box .authr-name-description-box{
+    height: 57px;
+    /* width: 55%;*/
+    width: 180px;
+    margin-top: 4px;
+    margin-left: 0px;
+    overflow: hidden;
+    /* border: 1px solid black; */
+}
+
+.followed-authors-and-recommendations-box .followed-authors-box .followed-authors-details-box .authr-name-description-box .followed-authors-name{
+    font-weight: 600;
+    margin-left: 10px;
+    margin-top: -0.3px;
+    font-size: 15px;
+}
+
+.followed-authors-and-recommendations-box .followed-authors-box .followed-authors-details-box .authr-name-description-box .follwed-authors-description{
+    margin-left: 10px;
+    margin-top: -10px;
+    font-size: 13px;
+    color: #646464;
+}
+
+.followed-authors-and-recommendations-box .followed-authors-box .followed-authors-details-box .Read-Blog-ofAuthor{
+    height: 30px;
+    padding: 10px 15px;
+    display: flex;
+    font-size: 13px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-family: "Hellix";
+    border: 1px solid black;
+    background-color: transparent;
+}
+
+
+
+
+
+.followed-authors-and-recommendations-box .reccomendation-topics-box{
+    /* border: 1px solid #000; */
+    margin-bottom: 30px;
+    width: 300px;
+}
+
+.followed-authors-and-recommendations-box .reccomendation-topics-box .reccomendation-topics-text{
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+    font-family: "Hellix";
+}
+
+
+.followed-authors-and-recommendations-box .reccomendation-topics-box button{
+    font-size: 12px;
+    color: #646464;
+    border: none;
+    cursor: pointer;
+    margin: 7px;
+    padding: 10px 15px;
+    border-radius: 30px;
+    background-color: #F2F2F2;
+}
+
+
+
+
+
+
+
+
+/* @media (max-width: 480px) {
+
+} */
+
+@media (max-width: 1000px) {
+
+    .topics-latestarticle-box .topics-bar{
+        width: 100%;
+        height: 45px;
+        margin-top: 32px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        display: flex;
+        align-items: center;
+        /* border-right: 1.5px solid #F2F2F2; */
+        border-bottom: 1.5px solid #F2F2F2;
+    }
+
+    .maincontent-area{
+        /* width: 88%; */
+        max-width: 1125px;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+        margin-left: 20px;
+        margin-right: 20px;
+        /* border: 1px solid orangered; */
+    }
+
+    .topics-latestarticle-box{
+        width: 100%;
+        height: 100%;
+        /* border: 2px solid red; */
+        border-right: 1px solid #FFF;
+    }
+
+    .topics-latestarticle-box .latest-article-section .article-card{
+        width: 100%;
+        /* height: 50%; */
+        height: max-content;
+        padding-top: 20px;
+        padding-bottom: 30px;
+        /* margin: auto; */
+        /* border-top: 2px solid black; */
+        /* border: 2px solid black; */
+        margin-top: 30px;
+        border-bottom: 2px solid #F2F2F2;
+    }
+        
+    .followed-authors-and-recommendations-box{
+        display: none;
+    }
+}
+
+/* @media (max-width: 768px) {
+    
+} */
